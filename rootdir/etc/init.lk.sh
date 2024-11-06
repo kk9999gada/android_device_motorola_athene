@@ -164,12 +164,10 @@ fi
 
 # Post-setup services
 echo 1 > /sys/block/mmcblk0/queue/iostats
-echo 128 > /sys/block/mmcblk0/bdi/read_ahead_kb
+echo "cfq" > /sys/block/mmcblk0/queue/scheduler
 echo 128 > /sys/block/mmcblk0/queue/read_ahead_kb
 echo 128 > /sys/block/mmcblk0/queue/nr_requests
-echo 10 > /sys/block/mmcblk0/queue/iosched/slice_idle
-echo 128 > /sys/block/mmcblk0rpmb/bdi/read_ahead_kb
-echo 128 > /sys/block/mmcblk0rpmb/queue/read_ahead_kb
+echo 0 > /sys/block/mmcblk0/queue/iosched/slice_idle
 setprop sys.post_boot.parsed 1
 setprop vendor.post_boot.parsed 1
 
